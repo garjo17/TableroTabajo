@@ -1,8 +1,8 @@
-Ext.define('CustomApp', {
+ Ext.define('CustomApp', {
     extend: 'Rally.app.App',
     componentCls: 'app',
     launch: function() {
-		   Ext.create('Rally.data.wsapi.TreeStoreBuilder').build({
+		     Ext.create('Rally.data.wsapi.TreeStoreBuilder').build({
                         models:['hierarchicalrequirement', 'defect','defectsuite', 'userstory','testset'],
                         autoLoad: true,
                         enableHierarchy: true
@@ -41,16 +41,22 @@ Ext.define('CustomApp', {
                         } 
                     ],
                     cardBoardConfig: {
-                         attribute: 'ScheduleState'
+                      attribute:   'ScheduleState' ,
+					  rowConfig: {
+                            field: 'Project'
+                        }
                     },
                     gridConfig: {
                     store: store,
-                        columnCfgs: [
+                    columnCfgs: [
                             'Name',
                             'ScheduleState',
                             'Owner',
                             'PlanEstimate'
-                        ]
+                        ],
+						rowConfig: {
+                            field: 'Project'
+                        }
                     },
                     height: this.getHeight()
                     });
@@ -59,4 +65,3 @@ Ext.define('CustomApp', {
 				
             });
             
-	
